@@ -9,14 +9,14 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class LectorService {
-    private final LectorRepository lectorRepo;
+    private final LectorRepository lectorRepository;
 
     public LectorService(LectorRepository lectorRepo) {
-        this.lectorRepo = lectorRepo;
+        this.lectorRepository = lectorRepo;
     }
 
     public List<String> globalSearch(String tpl) {
-        return lectorRepo.globalSearchByName(tpl);
+        return lectorRepository.globalSearchByName(tpl);
     }
 }
 

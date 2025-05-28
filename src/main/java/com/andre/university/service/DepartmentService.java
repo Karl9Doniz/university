@@ -16,11 +16,11 @@ import java.util.NoSuchElementException;
 @Transactional(readOnly = true)
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
-    private final LectorRepository lectorRepo;
+    private final LectorRepository lectorRepository;
 
     public DepartmentService(DepartmentRepository departmentRepository, LectorRepository lectorRepo) {
         this.departmentRepository = departmentRepository;
-        this.lectorRepo = lectorRepo;
+        this.lectorRepository = lectorRepo;
     }
 
     public String getHeadOfDepartment(String departmentName) {
@@ -32,14 +32,14 @@ public class DepartmentService {
     public Map<Degree, Long> getStatistics(String departmentName) {
         EnumMap<Degree, Long> stats = new EnumMap<>(Degree.class);
         for (Degree degree : Degree.values()) {
-            long count = lectorRepo.countByDepartmentAndDegree(departmentName, degree);
+            long count = lectorRepository.countByDepartmentAndDegree(departmentName, degree);
             stats.put(degree, count);
         }
         return stats;
     }
 
     public BigDecimal getAverageSalary(String departmentName) {
-        return lectorRepo.averageSalaryByDepartment(departmentName);
+        return lectorRepository.averageSalaryByDepartment(departmentName);
     }
 
     public long getEmployeeCount(String departmentName) {
