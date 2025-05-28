@@ -11,12 +11,12 @@ import java.util.List;
 public class LectorService {
     private final LectorRepository lectorRepository;
 
-    public LectorService(LectorRepository lectorRepo) {
-        this.lectorRepository = lectorRepo;
+    public LectorService(LectorRepository lectorRepository) {
+        this.lectorRepository = lectorRepository;
     }
 
-    public List<String> globalSearch(String tpl) {
-        return lectorRepository.globalSearchByName(tpl);
+    public List<String> globalSearch(String template) {
+        return lectorRepository.globalSearchByName(template);
     }
 }
 
