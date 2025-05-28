@@ -4,6 +4,7 @@ import com.andre.university.model.Degree;
 import com.andre.university.service.DepartmentService;
 import com.andre.university.service.LectorService;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedHashMap;
@@ -15,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
+@ConditionalOnProperty(name = "app.console.enabled", havingValue = "true", matchIfMissing = true)
 public class ConsoleRunner implements CommandLineRunner {
     private static final String HELP = """
       Available commands:
